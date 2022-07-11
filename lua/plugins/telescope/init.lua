@@ -175,6 +175,11 @@ M.search_dotfiles = function()
   }
 end
 
+M.grep_project = function()
+  builtin.grep_string ({ search = vim.fn.input("Grep For > "), initial_mode = 'normal'})
+  -- require('plugins.telescope.pickers.multi-rg')()
+end
+
 M.search_projects = function()
  require('telescope').extensions.repo.list {
     file_ignore_patterns={'/%.cache/', '/%.cargo/', '/%.local/', '/%timeshift/', '/usr/', '/srv/', '/%.oh%-my%-zsh', '%.vim', '%qmk_firmware' , '%.tmux', '%powerlevel10k', '%.nvm'}
