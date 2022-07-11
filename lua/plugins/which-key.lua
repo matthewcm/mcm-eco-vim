@@ -99,8 +99,10 @@ local normal_mode_mappings = {
   ["/"] = {
     name = "Ecovim",
     ["/"] = { '<cmd>Alpha<CR>',                                 'open dashboard' },
-    c = { '<cmd>e $MYVIMRC<CR>',                                    'open config' },
+    c = { ':e $MYVIMRC<CR>',                                    'open config' },
+    d = { '<cmd>lua require("plugins.telescope").search_dotfiles()<CR>', 'dotfiles' },
     i = { '<cmd>PackerInstall<CR>',                             'install plugins' },
+    n = { '<cmd>lua require("plugins.telescope").edit_neovim()<CR>', 'nvim dotfiles' },
     u = { '<cmd>PackerSync<CR>',                                'update plugins' },
     s = {
       name = "Session",
@@ -192,9 +194,12 @@ local normal_mode_mappings = {
 
   p = {
     name = "Project",
-    f = { 'file' },
+    f = { "<CMD>lua require('plugins.telescope').project_files({initial_mode = 'normal'})<CR>", 'file' },
     w = { 'word' },
     l = { "<cmd>lua require'telescope'.extensions.repo.cached_list{file_ignore_patterns={'/%.cache/', '/%.cargo/', '/%.local/', '/%timeshift/', '/usr/', '/srv/', '/%.oh%-my%-zsh', '/Library/', '/%.cocoapods/'}}<CR>", 'list' },
+    x = { '<cmd> lua require("plugins.telescope").search_projects()<CR>', 'list' },
+    g = { '<cmd> lua require("plugins.telescope").grep_project()<CR>', 'grep' },
+    n = { '<cmd>lua require("plugins.telescope").edit_neovim()<CR>', 'nvim dotfiles' },
     r = { 'refactor' },
     s = { "<cmd>SessionManager save_current_session<CR>",            'save session' },
     t = { "<cmd>TodoTrouble<CR>",                                    'todo' },
@@ -204,9 +209,9 @@ local normal_mode_mappings = {
     name = "Search",
     c = { '<cmd>Telescope colorscheme<CR>',                              'color schemes' },
     d = { '<cmd>lua require("plugins.telescope").edit_neovim()<CR>',     'dotfiles' },
-    h = { '<cmd>Telescope oldfiles hidden=true<CR>',                     'file history' },
-    H = { '<cmd>lua require("plugins.telescope").command_history()<CR>', 'command history' },
-    s = { '<cmd>Telescope search_history theme=dropdown<CR>',            'search history' },
+    h = { '<cmd>Telescope oldfiles<CR>',                             'file history' },
+    H = { '<cmd>Telescope command_history<CR>',                      'command history' },
+    s = { '<cmd>Telescope search_history<CR>',                       'search history' },
   },
 
   t = {
@@ -310,6 +315,7 @@ local function attach_npm(bufnr)
     mode = "n", -- NORMAL mode
     prefix = "<leader>",
     silent = true, -- use `silent` when creating keymaps
+
     noremap = true, -- use `noremap` when creating keymaps
     nowait = false, -- use `nowait` when creating keymaps
   })
