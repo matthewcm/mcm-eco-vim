@@ -8,7 +8,7 @@ end
 
 lsp_installer.setup {
   -- A list of servers to automatically install if they're not already installed
-  ensure_installed = { "bashls", "cssls", "eslint", "graphql", "html", "jsonls", "sumneko_lua", "tailwindcss", "tsserver", "vetur", "vuels" },
+  ensure_installed = { "bashls", "cssls", "eslint", "graphql", "html", "jsonls", "sumneko_lua", "tailwindcss", "tsserver", "vetur", "vuels", "rust-analyzer" },
   -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed
   automatic_installation = true,
 
@@ -86,7 +86,6 @@ lspconfig.vuels.setup {
   on_attach = on_attach,
 }
 
-
 for _, server in ipairs { "bashls", "cssls", "graphql", "html", "volar" } do
   lspconfig[server].setup {
     on_attach = on_attach,
@@ -94,3 +93,7 @@ for _, server in ipairs { "bashls", "cssls", "graphql", "html", "volar" } do
     handlers = handlers,
   }
 end
+
+require('rust-tools').setup(
+  require('lsp.servers.rust')
+)

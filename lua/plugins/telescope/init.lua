@@ -1,6 +1,7 @@
 local actions    = require('telescope.actions')
 local previewers = require('telescope.previewers')
 local builtin    = require('telescope.builtin')
+
 local icons      = EcoVim.icons;
 
 require('telescope').load_extension('fzf')
@@ -154,6 +155,30 @@ M.command_history = function()
         end,
       },
     }))
+end
+
+M.search_dotfiles = function()
+  builtin.git_files {
+    cwd              = "~/.dotfiles",
+    prompt           = "~ dotfiles ~",
+    color_devicons   = true,
+    sorting_strategy = "ascending",
+    layout_config    = {
+      horizontal = {
+        mirror = false,
+      },
+      vertical = {
+        mirror = false,
+      },
+      prompt_position = "top",
+    },
+  }
+end
+
+M.search_projects = function()
+ require('telescope').extensions.repo.list {
+    file_ignore_patterns={'/%.cache/', '/%.cargo/', '/%.local/', '/%timeshift/', '/usr/', '/srv/', '/%.oh%-my%-zsh', '%.vim', '%qmk_firmware' , '%.tmux', '%powerlevel10k', '%.nvm'}
+  }
 end
 
 return M
