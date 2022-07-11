@@ -11,6 +11,7 @@ vim.g.tokyonight_italic_functions = true
 vim.g.tokyonight_colors = {
   border = '#1A1B26';
 }
+vim.g.tokyonight_transparent = true
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Setup Colorscheme                                        │
@@ -78,6 +79,11 @@ if EcoVim.colorscheme == 'tokyonight' then
   }
 
   vim.api.nvim_set_hl(0, "CmpBorderedWindow_FloatBorder", { fg = tokyonight_colors.blue0 })
+
+
+
+
+
 
   for group, hl in pairs(highlights) do
     vim.api.nvim_set_hl(0, group, hl)
