@@ -61,6 +61,10 @@ return require('packer').startup({
       config = "require('plugins.cmp-npm')" }
     use { 'saadparwaiz1/cmp_luasnip', after = 'cmp-npm' }
 
+
+    -- RUST
+    use { 'simrat39/rust-tools.nvim'}
+
     -- LSP Addons
     use { 'stevearc/dressing.nvim', requires = 'MunifTanjim/nui.nvim', config = "require('plugins.dressing')" }
     use { 'onsails/lspkind-nvim' }
