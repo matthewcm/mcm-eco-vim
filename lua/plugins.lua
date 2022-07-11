@@ -118,6 +118,7 @@ return require('packer').startup({
       config = "require('plugins.git.signs')",
       event = "BufRead"
     }
+
     use { 'sindrets/diffview.nvim', config = "require('plugins.git.diffview')" }
     use { 'akinsho/git-conflict.nvim', config = "require('plugins.git.conflict')" }
     use { 'ThePrimeagen/git-worktree.nvim', config = "require('plugins.git.worktree')" }
@@ -134,6 +135,8 @@ return require('packer').startup({
       },
       config = "require('plugins.neotest')"
     }
+
+    use {'olacin/telescope-cc.nvim', config = "require('plugins.telescope.conventional-commits')"}
 
     if packer_bootstrap then
       require('packer').sync()
