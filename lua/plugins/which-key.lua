@@ -202,7 +202,7 @@ local normal_mode_mappings = {
     n = { '<cmd>lua require("plugins.telescope").edit_neovim()<CR>', 'nvim dotfiles' },
     r = { 'refactor' },
     s = { "<cmd>SessionManager save_current_session<CR>",            'save session' },
-    t = { "<cmd>TodoTrouble<CR>",                                    'todo' },
+    t = { "<cmd>TodoTelescope<CR>",                                    'todo' },
   },
 
   s = {
